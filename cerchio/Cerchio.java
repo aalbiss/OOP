@@ -6,43 +6,48 @@ public class Cerchio {
 
 	private int raggio;
 
-	Cerchio(){
+	public Cerchio(){
 		raggio = 0;
 	}
 
-	Cerchio(int r){
-		raggio = r;
+	public Cerchio(int raggio){
+		this.raggio = raggio;
 	}
 
-	double circonferenza() {
-		double c = Math.PI*Math.pow(raggio, 2);
-		return c;
-	}
-
-	double area() {
-		double area=2*Math.PI*raggio;
-		return area;
+	public void inserimento() {
+		Scanner KB = new Scanner(System.in);
+		int r;
+		
+		do {
+			System.out.println("Inserisci il raggio del cerchio");
+			r = KB.nextInt();
+		}while(r<=0);	
+		setRaggio(r);
 	}
 	
-	//metodi setter and getter
-	// set -> memorizzare - salva un dato
-	// get -> leggere	  - restituisce un dato
-	
-	public void setRaggio(int r) {
-		if (r>0)
-			raggio = r;
+	public void setRaggio(int raggio) {
+		if (raggio>0)
+			this.raggio = raggio;
 		else 
-			raggio = 0;
+			this.raggio = 0;
 	}
 	
 	public int getRaggio() {
 		return raggio;
 	}
 
-	void inserimento() {
-		Scanner KB = new Scanner(System.in);
-		System.out.println("Inserisci il raggio del cerchio");
-		raggio = KB.nextInt();
+	public double getCirconferenza() {
+		double c = Math.PI*Math.pow(raggio, 2);
+		return c;
 	}
 
+	public double getArea() {
+		double area=2*Math.PI*raggio;
+		return area;
+	}
+
+	public String toString() {
+		String s = "Cerchio -> Raggio= " + getRaggio() + " Circonferenza= " + getCirconferenza() + " Area= " + getArea();
+		return s;
+	}
 }
